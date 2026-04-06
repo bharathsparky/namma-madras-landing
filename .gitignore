@@ -13,3 +13,4 @@ dist-ssr
 
 # Editor
 .DS_Store
+.vercel
