@@ -1,16 +1,18 @@
+import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Aurora } from './components/Aurora'
-import { AnimatedList } from './components/AnimatedList'
-import { BlurText } from './components/BlurText'
-import { CountUp } from './components/CountUp'
-import { FadeContent } from './components/FadeContent'
-import { GradientText } from './components/GradientText'
-import { Magnet } from './components/Magnet'
-import { Navbar } from './components/Navbar'
-import { PhoneMockup } from './components/PhoneMockup'
-import { ShinyText } from './components/ShinyText'
-import { SplitText } from './components/SplitText'
-import { TiltCard } from './components/TiltCard'
+import Aurora from '../components/Aurora'
+import { AnimatedList } from '../components/AnimatedList'
+import { BlurText } from '../components/BlurText'
+import { CountUp } from '../components/CountUp'
+import { FadeContent } from '../components/FadeContent'
+import { GradientText } from '../components/GradientText'
+import { LightRays } from '../components/LightRays'
+import { Magnet } from '../components/Magnet'
+import { Navbar } from '../components/Navbar'
+import { PhoneMockup } from '../components/PhoneMockup'
+import { ShinyText } from '../components/ShinyText'
+import { SplitText } from '../components/SplitText'
+import { TiltCard } from '../components/TiltCard'
 
 const FEATURES = [
   { emoji: '🍛', title: 'Food', body: '47+ free meal locations — Amma canteens, NGOs & temples.' },
@@ -29,19 +31,30 @@ const STEPS = [
 
 const APK_HREF = 'https://github.com/bharathsparky/namma-madras/releases'
 
-export default function App() {
+export default function LandingPage() {
   const scrollToDownload = () => {
     document.getElementById('download')?.scrollIntoView({ behavior: 'smooth' })
   }
 
   return (
     <div className="relative min-h-screen overflow-x-hidden bg-[#0A0A0A] text-white">
-      <Aurora className="opacity-90" />
+      <div className="pointer-events-none absolute inset-0 opacity-[0.45]">
+        <Aurora />
+      </div>
       <Navbar onDownload={scrollToDownload} />
 
-      {/* Hero */}
-      <section className="relative px-4 pb-20 pt-28 sm:px-6 sm:pb-28 sm:pt-32">
-        <div className="mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
+      {/* Hero — light rays (reactbits.dev style) + content */}
+      <section className="relative min-h-[min(92vh,960px)] overflow-hidden border-b border-[#2A2A2A]/40 px-4 pb-20 pt-28 sm:px-6 sm:pb-28 sm:pt-32">
+        <LightRays
+          raysColor="#5eead4"
+          lightSpread={1.9}
+          rayLength={2.8}
+          fadeDistance={1.12}
+          raysSpeed={0.48}
+          mouseInfluence={0.06}
+          noiseAmount={0.04}
+        />
+        <div className="relative z-10 mx-auto grid max-w-6xl gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:gap-16">
           <div>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -263,6 +276,9 @@ export default function App() {
             <a href="mailto:sparkylab.apps@gmail.com" className="hover:text-white">
               sparkylab.apps@gmail.com
             </a>
+            <Link to="/privacy" className="hover:text-white">
+              Privacy Policy
+            </Link>
             <a
               href="https://github.com/bharathsparky/namma-madras-landing"
               target="_blank"
