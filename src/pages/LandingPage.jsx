@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { OFFICIAL_SOURCE_LINKS } from '../data/officialSources'
 import { motion } from 'framer-motion'
 import Aurora from '../components/Aurora'
 import { AnimatedList } from '../components/AnimatedList'
@@ -262,6 +263,67 @@ export default function LandingPage() {
             </motion.a>
           </div>
         </FadeContent>
+      </section>
+
+      {/* Independent app + sources (mirrors in-app Trust & official sources) */}
+      <section className="border-t border-[#2A2A2A] px-4 py-16 sm:px-6" aria-labelledby="landing-trust-heading">
+        <div className="mx-auto max-w-3xl">
+          <div className="rounded-2xl border-2 border-[#00695C]/50 bg-[#061816] p-6 sm:p-8">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#5eead4]/90">Important</p>
+            <h2 id="landing-trust-heading" className="mt-2 text-2xl font-bold text-white sm:text-3xl">
+              Not a government app — verify before you go
+            </h2>
+            <p className="mt-4 text-[15px] leading-relaxed text-[#CFCFCF] sm:text-base">
+              Namma Madras is <strong className="text-white">independent</strong> and not published by any government
+              body. Information comes from <strong className="text-white">public and open sources</strong> and may be
+              incomplete or wrong. Always <strong className="text-white">confirm timings and availability</strong> with
+              each place or official channel.
+            </p>
+            <p className="mt-4 text-sm leading-relaxed text-[#9E9E9E]">
+              Full privacy policy, disclaimer, and reference links:{' '}
+              <Link to="/privacy" className="font-semibold text-[#00695C] hover:underline">
+                Privacy policy →
+              </Link>
+            </p>
+            <div className="mt-8 border-t border-[#2A2A2A] pt-6">
+              <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[#6B6B6B]">Official websites</p>
+              <ul className="mt-3 flex flex-col gap-2 text-sm">
+                {OFFICIAL_SOURCE_LINKS.map(({ url, label }) => (
+                  <li key={url}>
+                    <a
+                      href={url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[#00695C] hover:text-[#0D9488] hover:underline"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+              <p className="mt-4 text-xs text-[#6B6B6B]">
+                Map tiles (when online): subject to{' '}
+                <a
+                  href="https://wiki.osmfoundation.org/wiki/Privacy_Policy"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#00695C] hover:underline"
+                >
+                  OpenStreetMap Foundation
+                </a>{' '}
+                · App source:{' '}
+                <a
+                  href="https://github.com/bharathsparky/namma-madras"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-[#00695C] hover:underline"
+                >
+                  GitHub
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
       </section>
 
       {/* Footer */}
